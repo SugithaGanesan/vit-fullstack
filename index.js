@@ -20,12 +20,16 @@ app.post("/bfhl", (req, res) => {
     let sum = 0;
 
     data.forEach(item => {
+
       if (/^-?\d+$/.test(item)) {
-        let num = parseInt(item);
-        if (num % 2 === 0) even_numbers.push(item);
-        else odd_numbers.push(item);
-        sum += num;
-      } else if (/^[a-zA-Z]+$/.test(item)) {
+  let num = parseInt(item);
+  if (num % 2 === 0) even_numbers.push(num.toString()); // ensure string
+  else odd_numbers.push(num.toString());                  // ensure string
+  sum += num;
+}
+
+
+      else if (/^[a-zA-Z]+$/.test(item)) {
         alphabets.push(item.toUpperCase());
       } else {
         special_characters.push(item);
